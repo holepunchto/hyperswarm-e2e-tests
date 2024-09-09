@@ -1,0 +1,19 @@
+{
+  "name": "hyperswarm-e2e-tests",
+  "version": "0.0.0",
+  "description": "Hyperswarm end-to-end tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holepunchto/hyperdht-e2e-test.git"
+  },
+  "author": "Holepunch",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/holepunchto/hyperdht-e2e-test/issues"
+  },
+  "homepage": "https://github.com/holepunchto/hyperdht-e2e-test#readme"
+}
