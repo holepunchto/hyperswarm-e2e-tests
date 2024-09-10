@@ -1,6 +1,6 @@
 {
   "name": "hyperswarm-e2e-tests",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "Hyperswarm end-to-end tests",
   "main": "index.js",
   "scripts": {
