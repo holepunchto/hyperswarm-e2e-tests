@@ -60,12 +60,13 @@ async function main () {
   logger.info('Starting hyperswarm-e2e-tests server')
   const swarm = new Hyperswarm()
   swarm.on('connection', async (conn) => {
+    conn.on('error', safetyCatch)
+
     logger.info('Connection opened')
     const fileHandler = await fsProm.open(fileLoc)
-    const readStream = fileHandler.createReadStream()
 
+    const readStream = fileHandler.createReadStream()
     conn.on('close', () => readStream.destroy())
-    conn.on('error', safetyCatch)
 
     readStream.on('close', () => {
       conn.destroy()
