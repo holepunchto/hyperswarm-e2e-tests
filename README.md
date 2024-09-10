@@ -8,6 +8,8 @@
 
 Create a file called file-to-seed (as large as the transfer size you wish to test) and place it in a directory. That directory should be mounted read-only into the docker container.
 
+To create a 1Gb file on linux: `fallocate -l 1G file-to-seed`
+
 TODO: simplify so we don't need to mount a file, but instead specify how much Mb we wish to replicate.
 
 ```
