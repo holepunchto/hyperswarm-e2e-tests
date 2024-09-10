@@ -50,7 +50,16 @@ async function main () {
 
   logger.info('Starting hyperswarm-e2e-tests client')
   const swarm = new Hyperswarm()
+
+  let hasConnected = false
   swarm.on('connection', async (conn) => {
+    if (hasConnected) {
+      logger.info('Ignoring connection (already connected before)')
+      conn.destroy()
+      return
+    }
+
+    hasConnected = true
     logger.info('connection opened')
     conn.on('error', safetyCatch)
 
@@ -65,8 +74,6 @@ async function main () {
     })
 
     conn.on('close', () => {
-      // TODO: avoid having it download twice
-      // (it reconnects faster than the swarm.leave is processed)
       logger.info(`Finished downloading, total downloaded: ${formatBytes(totalData)}) in ${(Date.now() - startTime) / 1000}s`)
       swarm.leave(discoveryKey).catch(safetyCatch)
     })
